@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>One Question 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(#ffe4ec, #ffd1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 90%;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 230px;
+      margin: 12px 0;
+      animation: float 2s infinite alternate;
+    }
+
+    #message {
+      font-size: 20px;
+      min-height: 30px;
+      margin: 12px 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 18px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    #yes {
+      background: #28a745;
+      color: white;
+    }
+
+    #no {
+      background: white;
+      border: 2px solid black;
+      color: black;
+      position: relative;
+    }
+
+    /* heartbeat pulse */
+    .pulse {
+      animation: pulse 0.6s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Main Proposal -->
+    <h1>Will you be my Valentine ❤️ ?</h1>
+
+    <!-- Bear GIF -->
+    <img src="https://media.tenor.com/MfeQ992BMj4AAAAM/velvet.gif" alt="cute bear">
+
+    <!-- Emotional changing line -->
+    <div id="message"></div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="yes" onclick="goYes()">YES 💚</button>
+      <button id="no" onclick="handleNo()">NO 😢</button>
+    </div>
+
+  </div>
+
+  <script>
+    let noCount = 0;
+
+    const messages = [
+      "I love you so much 🥺💖 please reconsider",
+      "You really mean a lot to me 🫶",
+      "My heart feels calm thinking of you 🤍",
+      "You make my days softer 🌸",
+      "I promise to respect you always ✨",
+      "You’re special to me 💗",
+      "Please don’t say no so easily 😭",
+      "I smile every time I think of you 😊",
+      "You matter to me more than words 💘",
+      "I’d choose you again and again 🔁💞",
+      "You make ordinary moments magical ✨",
+      "My heart feels safe with you 🫀",
+      "I just want to make you happy 🌈",
+      "You’re my favorite thought 💭💖",
+      "Please… just think once more 🥹",
+      "I really really care 🤍",
+      "This is me being honest 💓",
+      "I’m not forcing, just hoping 🙏",
+      "Your smile means everything 😊💝",
+      "I adore you deeply 💕",
+      "You’re worth every wait ⏳💗",
+      "My heart is asking gently 💘",
+      "Just one yes… 🥺👉👈",
+      "I’ll still smile even if you say no 🙂",
+      "Okay… last time… from my heart 😭💖"
+    ];
+
+    function handleNo() {
+      // change text
+      if (noCount < messages.length) {
+        document.getElementById("message").textContent = messages[noCount];
+        noCount++;
+      }
+
+      // pulse YES button
+      const yesBtn = document.getElementById("yes");
+      yesBtn.classList.remove("pulse");
+      void yesBtn.offsetWidth; // restart animation
+      yesBtn.classList.add("pulse");
+
+      // move NO button
+      const noBtn = document.getElementById("no");
+      noBtn.style.position = "absolute";
+      noBtn.style.left = Math.random() * 70 + "vw";
+      noBtn.style.top = Math.random() * 70 + "vh";
+    }
+
+    function goYes() {
+      window.location.href = "feelings.html";
+    }
+  </script>
+
+</body>
+</html>
